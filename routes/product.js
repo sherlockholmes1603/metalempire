@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const express = require("express");
 const wrapAsync = require("../utils/wrapAsync.js");
 const router = express.Router();
-const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
-const { index, showListing, renderNewForm, createListing, renderEditForm, editListing, destroyListing } = require("../controllers/listing.js");
+const { isLoggedIn, isOwner, validateproduct } = require("../middleware.js");
+const { index, showproduct, renderNewForm, createproduct, renderEditForm, editproduct, destroyproduct } = require("../controllers/product.js");
 const multer = require('multer');
 const { storage } = require("../cloudConfig.js");
 const upload = multer({storage});
@@ -13,15 +13,15 @@ const upload = multer({storage});
 
 router.route("/")
     .get(wrapAsync(index))
-    .post(isLoggedIn, upload.single("listing[image]"), validateListing, wrapAsync(createListing));
+    .post(isLoggedIn, upload.single("product[image]"), validateproduct, wrapAsync(createproduct));
 
 
 router.get("/new", isLoggedIn, wrapAsync(renderNewForm));
 
 router.route("/:id")
-    .get(wrapAsync(showListing))
-    .put(isLoggedIn, isOwner, upload.single("listing[image]"), wrapAsync(editListing))
-    .delete(isLoggedIn, isOwner, wrapAsync(destroyListing));
+    .get(wrapAsync(showproduct))
+    .put(isLoggedIn, isOwner, upload.single("product[image]"), wrapAsync(editproduct))
+    .delete(isLoggedIn, isOwner, wrapAsync(destroyproduct));
 
 
 

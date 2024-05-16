@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
-module.exports.listingSchema = Joi.object({
-    listing: Joi.object({
+module.exports.productSchema = Joi.object({
+    product: Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),
         location: Joi.string().required(),

@@ -8,7 +8,7 @@ const express = require("express");
 const path = require("path");
 const method = require("method-override");
 const app = express();
-const Listing = require("./models/listing.js");
+const product = require("./models/product.js");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
@@ -20,7 +20,7 @@ const localStrategy = require("passport-local");
 const user = require("./models/user.js");
 
 
-const listingRoute = require("./routes/listing.js");
+const productRoute = require("./routes/product.js");
 const reviewRoute = require("./routes/review.js");
 const userRoute = require("./routes/user.js");
 
@@ -48,7 +48,7 @@ app.use(method("_method"));
 app.use(express.urlencoded({extended: true}));
 
 const store = MongoStore.create({
-  mongoUrl: dbURL,
+  mongoUrl: MongoUrl,
   crypto: {
     secret: "mysecretcode"
   },
@@ -73,7 +73,7 @@ const sessionOptions = {
 
 
 app.get("/", (req, res) => {
-  res.redirect("/listings");
+  res.redirect("/products");
 });
 
 app.use(session(sessionOptions));
@@ -97,9 +97,9 @@ app.use((req, res, next) => {
 
 
 
-app.use("/listings", listingRoute);
+app.use("/products", productRoute);
 
-app.use("/listings/:id/reviews", reviewRoute);
+app.use("/products/:id/reviews", reviewRoute);
 
 app.use("/", userRoute);
 

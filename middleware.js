@@ -1,14 +1,14 @@
-const Listing = require("./models/listing.js");
+const product = require("./models/product.js");
 const Review = require("./models/review.js");
 const ExpressError = require("./utils/ExpressError.js");
-const {listingSchema, reviewSchema} = require("./schema.js");
+const {productSchema, reviewSchema} = require("./schema.js");
 
 
 
 module.exports.isLoggedIn = (req, res, next) => {
     if(!req.isAuthenticated()){
         req.session.redirectUrl = req.originalUrl;
-        req.flash("error", "You must be logged in to create a new listing or edit a listing");
+        req.flash("error", "You must be logged in to create a new product or edit a product");
         return res.redirect("/login");
     }
     next();
@@ -25,17 +25,17 @@ module.exports.saveRedirectUrl = (req, res, next) => {
 
 module.exports.isOwner = async (req, res, next) => {
     let {id} = req.params;
-    let listing = await Listing.findById(id);
-        if(!listing.owner._id.equals(res.locals.user._id)){
+    let product = await product.findById(id);
+        if(!product.owner._id.equals(res.locals.user._id)){
         req.flash("error", "You don't have permission to edit");
-        return res.redirect(`/listings/${id}`);
+        return res.redirect(`/products/${id}`);
     }
     next();
 };
 
 
-module.exports.validateListing = (req, res, next) => {
-    let {error} = listingSchema.validate(req.body);
+module.exports.validateproduct = (req, res, next) => {
+    let {error} = productSchema.validate(req.body);
     if (error) {
       let errMsg = error.details.map((el) => el.message).join(",");
       throw new ExpressError(400, errMsg);
@@ -62,7 +62,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     let review = await Review.findById(rid);
     if(!review.author._id.equals(res.locals.user._id)){
         req.flash("error", "You are not the author of the review");
-        return res.redirect(`/listings/${id}`);
+        return res.redirect(`/products/${id}`);
     }
     next();
 };

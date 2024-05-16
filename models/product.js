@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
 
-const listingSchema = Schema({
+const productSchema = Schema({
   title: {
     type: String,
     required: true,
@@ -38,11 +38,11 @@ const listingSchema = Schema({
   },
 });
 
-listingSchema.post("findOneAndDelete", async (listing) => {
-  if (listing) {
-    await Review.deleteMany({ _id: { $in: listing.reviews } });
+productSchema.post("findOneAndDelete", async (product) => {
+  if (product) {
+    await Review.deleteMany({ _id: { $in: product.reviews } });
   }
 });
 
-const Listing = mongoose.model("Listing", listingSchema);
-module.exports = Listing;
+const Product = mongoose.model("product", productSchema);
+module.exports = Product;

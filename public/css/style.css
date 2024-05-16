@@ -73,7 +73,7 @@ body{
 
 
 
-.listing-card{
+.product-card{
     margin:2rem;
     border: none !important;
 }
@@ -92,7 +92,7 @@ body{
     font-weight: 400 !important;
 }
 
-.listing-link{
+.product-link{
     text-decoration: none;
 }
 
