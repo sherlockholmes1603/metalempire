@@ -24,7 +24,7 @@ const listingRoute = require("./routes/listing.js");
 const reviewRoute = require("./routes/review.js");
 const userRoute = require("./routes/user.js");
 
-const MongoUrl = "mongodb://127.0.0.1:27017/wanderlust"
+const MongoUrl = "mongodb://127.0.0.1:27017/metalempire"
 const dbURL = process.env.MONGODB_ATLAS_URL;
 
 

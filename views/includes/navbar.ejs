@@ -1,27 +1,75 @@
 <nav class="navbar navbar-expand-md bg-body-tertiary border-bottom sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link"  href="/">Home</a>
-          <a class="nav-link" href="/listings">All Listings</a>
-          <a class="nav-link" href="/listings/new">New Listings</a>
-        </div>
-        <div class="navbar-nav ms-auto">
-          <% if (!user) { %>
-            <a href="/login" class="nav-link">Login</a>
-            <a href="/signup" class="nav-link">Signup</a>
-          <% } %>
+  <div class="container-fluid">
+    
+    <!-- Shop Logo and Name -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <i class="fa-solid fa-shop me-2"></i> MetalEmpire
+    </a>
+    
+    <!-- Toggler for Collapsing -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-          <% if (user) { %>
-            <a href="/logout" class="nav-link">Logout</a>
-          <% } %>
-          
-          
-        </div>
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav me-auto">
+        <a class="nav-link" href="/">Home</a>
+        <!-- Add more nav links if needed -->
+      </div>
+
+      <!-- Search Bar (Visible on Larger Screens) -->
+      <form class="d-none d-md-flex mx-auto">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-outline-light"
+          type="submit"
+          style="color: purple; border-color: purple"
+        >
+          Search
+        </button>
+      </form>
+
+      <!-- Login/Signup/Logout Links -->
+      <div class="navbar-nav ms-auto">
+        <% if (!user) { %>
+        <a href="/login" class="nav-link">Login</a>
+        <a href="/signup" class="nav-link">Signup</a>
+        <% } %> <% if (user) { %>
+        <a href="/logout" class="nav-link">Logout</a>
+        <% } %>
       </div>
     </div>
-  </nav>
+
+    <!-- Search Bar (Visible on Mobile) -->
+    <form class="d-flex d-md-none w-100 my-2">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-outline-light"
+        type="submit"
+        style="color: purple; border-color: purple"
+      >
+        Search
+      </button>
+    </form>
+
+  </div>
+</nav>

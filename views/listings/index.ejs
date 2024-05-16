@@ -1,6 +1,17 @@
 <% layout("./layout/boilerPlate.ejs") %>
 
-<h3>All Listings</h3>
+<div id="filters">
+  <div class="filter">
+    <div><i class="fa-solid fa-monument"></i></div>
+    <p>Statues</p>
+  </div>
+  <div class="filter">
+    <div><i class="fas fa-object-group"></i></div>
+    <p>Wall art</p>
+  </div>
+</div>
+<hr />
+
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <% allListings.forEach(Listing => { %>
   <a href="/listings/<%= Listing._id %>" class="listing-link">
