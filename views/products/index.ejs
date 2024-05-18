@@ -1,35 +1,51 @@
 <% layout("./layout/boilerPlate.ejs") %>
 
-<div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-monument"></i></div>
-    <p>Statues</p>
+<div class="container-fluid flex-container">
+  <div class="filters d-none d-md-block bg-light">
+    <!-- Filters content here -->
+    <div class="filter">
+      <div>Statues <i class="fa-solid fa-monument"></i></div>
+    </div>
+    <div class="filter">
+      <div>Wall art <i class="fas fa-object-group"></i></div>
+    </div>
   </div>
-  <div class="filter">
-    <div><i class="fas fa-object-group"></i></div>
-    <p>Wall art</p>
-  </div>
-</div>
-<hr />
-
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-  <% allproducts.forEach(product => { %>
-  <a href="/products/<%= product._id %>" class="product-link">
-    <div class="card col product-card" style="width: 20rem">
-      <img
-        src="<%= product.image.url %>"
-        class="card-img-top"
-        alt="product Image"
-        style="height: 20rem"
-      />
-      <div class="card-img-overlay"></div>
-      <div class="card-body">
-        <h5 class="card-title"><%= product.title %></h5>
-        <p class="card-text">
-          &#8377; <%= product.price.toLocaleString("en-IN") %>
-        </p>
+  <div class="d-block d-md-none">
+    <br><br>
+    <button class="btn btn-outline-light mb-3" style="color: purple; border-color: purple" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilters" aria-controls="offcanvasFilters">
+      Filters
+    </button>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFilters" aria-labelledby="offcanvasFiltersLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasFiltersLabel">Filters</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Filters content for offcanvas here -->
+        <div class="filter">
+          <div>Statues <i class="fa-solid fa-monument"></i></div>
+        </div>
+        <div class="filter">
+          <div>Wall art <i class="fas fa-object-group"></i></div>
+        </div>
       </div>
     </div>
-  </a>
-  <% }) %>
+  </div>
+
+  <div class="products">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <% allproducts.forEach(product => { %>
+      <a href="/products/<%= product._id %>" class="product-link">
+        <div class="card col product-card" style="width: 20rem">
+          <img src="<%= product.image.url %>" class="card-img-top" alt="product Image" style="height: 20rem">
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %></h5>
+            <p class="card-text">&#8377; <%= product.price.toLocaleString("en-IN") %></p>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>
 </div>
+

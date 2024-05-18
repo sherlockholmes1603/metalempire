@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const wrapAsync = require("../utils/wrapAsync.js");
 const router = express.Router();
-const { isLoggedIn, isOwner, validateproduct } = require("../middleware.js");
+const { isLoggedIn, isOwner, validateproduct, isAdmin } = require("../middleware.js");
 const { index, showproduct, renderNewForm, createproduct, renderEditForm, editproduct, destroyproduct } = require("../controllers/product.js");
 const multer = require('multer');
 const { storage } = require("../cloudConfig.js");
@@ -16,12 +16,12 @@ router.route("/")
     .post(isLoggedIn, upload.single("product[image]"), validateproduct, wrapAsync(createproduct));
 
 
-router.get("/new", isLoggedIn, wrapAsync(renderNewForm));
+router.get("/new", isLoggedIn, isAdmin, wrapAsync(renderNewForm));
 
 router.route("/:id")
     .get(wrapAsync(showproduct))
-    .put(isLoggedIn, isOwner, upload.single("product[image]"), wrapAsync(editproduct))
-    .delete(isLoggedIn, isOwner, wrapAsync(destroyproduct));
+    .put(isLoggedIn, isAdmin, upload.single("product[image]"), wrapAsync(editproduct))
+    .delete(isLoggedIn, isAdmin, wrapAsync(destroyproduct));
 
 
 

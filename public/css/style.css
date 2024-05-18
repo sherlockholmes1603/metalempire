@@ -119,14 +119,11 @@ body{
     width: 60vh;
 }
 
-#filters{
-    display: flex;
-    flex-wrap: wrap;
+.filters{
     margin-top: 10px;
 }
 
 .filter{
-    text-align: center;
     margin-right: 2rem;
     margin-top: 2rem;
     opacity: 0.7;
@@ -136,3 +133,32 @@ body{
     opacity: 1;
     cursor: pointer;
 }
+
+.main_index{
+    display: flex;
+}
+
+.flex-container {
+    display: flex;
+    height: 100vh;
+  }
+  .filters {
+    width: 25%;
+    padding: 10px;
+  }
+  .products {
+    width: 75%;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  @media (max-width: 768px) {
+    .flex-container {
+      display: block;
+    }
+    .filters {
+      width: 100%;
+    }
+    .products {
+      width: 100%;
+    }
+  }

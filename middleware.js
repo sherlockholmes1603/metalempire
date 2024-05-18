@@ -2,7 +2,7 @@ const product = require("./models/product.js");
 const Review = require("./models/review.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { productSchema, reviewSchema } = require("./schema.js");
-const admin = require("./models/admin.js");
+const user = require("./models/user.js");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -29,12 +29,10 @@ module.exports.isOwner = async (req, res, next) => {
 
 module.exports.isAdmin = async (req, res, next) => {
   let { id } = req.params;
-  let allAdmins = await admin.find();
-  allAdmins.forEach((admin) => {
-    if (admin._id == res.locals.user._id) {
-      return next();
-    }
-  });
+  let curUser = await user.findById(res.locals.user._id);
+  if (curUser.isAdmin){
+    return next();
+  }
   req.flash("error", "You don't have permission to edit");
   return res.redirect(`/products/${id}`);
 };
