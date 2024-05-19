@@ -1,10 +1,10 @@
-const product = require("../models/product.js");
+const products = require("../models/product.js");
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({accessToken: mapToken});
 
 module.exports.index = async (req, res) => {
-    let allproducts = await product.find();
+    let allproducts = await products.find();
     // console.log(chats);
     res.render("products/index.ejs", {allproducts});
 };
@@ -17,7 +17,7 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.showproduct = async (req, res) => {
     let {id} = req.params;
-    const product = await product.findById(id).populate({path: "reviews", populate:{path: "author"}}).populate("owner");
+    const product = await products.findById(id).populate({path: "reviews", populate:{path: "author"}});
     if(!product){
       req.flash("error", "product you requested does not exits");
       res.redirect("/products")

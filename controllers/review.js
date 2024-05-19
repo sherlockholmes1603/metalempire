@@ -3,18 +3,18 @@ const Review = require("../models/review.js");
 
 
 module.exports.giveReview = async (req, res) => {
-    let product = await product.findById(req.params.id);
+    let products = await product.findById(req.params.id);
     let newReview = new Review(req.body.review);
 
     newReview.author = req.user._id;
 
-    product.reviews.push(newReview);
+    products.reviews.push(newReview);
 
     await newReview.save();
-    await product.save();
+    await products.save();
 
     console.log("new Review saved");
-    res.redirect(`/products/${product._id}`);
+    res.redirect(`/products/${products._id}`);
 };
 
 
