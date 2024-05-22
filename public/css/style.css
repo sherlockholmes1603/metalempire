@@ -6,11 +6,15 @@ body {
 
 .container {
   flex: 1;
+  overflow-x: hidden;
 }
 
 .container-fluid {
+  flex: 1;
   background-color: white;
   opacity: 1;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -138,12 +142,14 @@ body {
   width: 75%;
   padding: 10px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .show{
     overflow-y: auto;
     width: 75%;
     padding: 10px;
+    overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
@@ -156,4 +162,11 @@ body {
   .products {
     width: 100%;
   }
+  .show{
+    width: 100%;
+  }
+}
+
+.reviwes{
+  justify-content: center;
 }
