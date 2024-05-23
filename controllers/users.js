@@ -1,4 +1,5 @@
-const User = require("../models/user")
+const User = require("../models/user");
+const Product = require("../models/product.js")
 
 module.exports.signup = async(req, res) => {
     try {
@@ -61,4 +62,27 @@ module.exports.cartItems = async (req, res, next) => {
     const cartQuantity = curUser.cart.quantity;
 
     res.render("user/cart.ejs", {cartItems, cartQuantity});
-}
+};
+
+module.exports.addItemsToCart = async (req, res, next) => {
+    let { id } = req.params;
+    let curUser = await User.findById(res.locals.user._id).populate('cart.products');
+
+    if (!curUser.cart) {
+        curUser.cart = { quantity: 0, products: [] };
+    }
+
+    let productInCart = curUser.cart.products.find(product => product._id.equals(id));
+
+    if (productInCart) {
+        req.flash("info", "Product is already in the cart");
+    } else {
+        let productToAdd = await Product.findById(id);
+        curUser.cart.products.push(productToAdd);
+        curUser.cart.quantity += 1;  
+    }
+
+    await curUser.save();
+    req.flash("success", "Product added to cart");
+    res.redirect('/cart');  
+};

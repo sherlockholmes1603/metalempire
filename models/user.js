@@ -12,7 +12,10 @@ const userSchema = new Schema({
     default: false
   },
   cart: {
-    quantity: Number,
+    quantity: {
+      type: Number,
+      default: 0
+    },
     products: [
       {
         type: Schema.Types.ObjectId,

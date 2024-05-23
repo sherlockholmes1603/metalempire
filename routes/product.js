@@ -6,6 +6,7 @@ const { isLoggedIn, isOwner, validateproduct, isAdmin } = require("../middleware
 const { index, showproduct, renderNewForm, createproduct, renderEditForm, editproduct, destroyproduct } = require("../controllers/product.js");
 const multer = require('multer');
 const { storage } = require("../cloudConfig.js");
+const { addItemsToCart } = require("../controllers/users.js");
 const upload = multer({storage});
 
 

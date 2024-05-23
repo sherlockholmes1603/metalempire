@@ -23,6 +23,14 @@
     </div>
   </div>
 
+  <div class="cart">
+    <% if (user) { %>
+      <form action="/cart/<%= product._id%>" method="post" class="needs-validation" novalidate>
+        <button class="btn btn-success">Add to Cart</button>
+      </form>
+    <% } %>
+  </div>
+
   <div class="reviews">
     <% if (user) { %>
 
