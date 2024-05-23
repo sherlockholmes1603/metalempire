@@ -10,6 +10,15 @@ const userSchema = new Schema({
   isAdmin: {
     type: Boolean,
     default: false
+  },
+  cart: {
+    quantity: Number,
+    products: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Product"
+      }
+    ]
   }
 });
 

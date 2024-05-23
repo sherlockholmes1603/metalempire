@@ -27,5 +27,4 @@ productSchema.post("findOneAndDelete", async (product) => {
   }
 });
 
-const Product = mongoose.model("product", productSchema);
-module.exports = Product;
+module.exports = mongoose.model("Product", productSchema);

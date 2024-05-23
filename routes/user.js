@@ -4,8 +4,8 @@ const ExpressError = require("../utils/ExpressError.js");
 const router = express.Router({mergeParams: true});
 const User = require("../models/user.js");
 const passport = require("passport");
-const { saveRedirectUrl } = require("../middleware.js");
-const { signup, renderSignup, login, renderLogin, logout } = require("../controllers/users.js");
+const { saveRedirectUrl, isLoggedIn } = require("../middleware.js");
+const { signup, renderSignup, login, renderLogin, logout, cartItems } = require("../controllers/users.js");
 
 
 
@@ -21,6 +21,9 @@ router.route("/login")
         login );
 
 router.get("/logout", logout);
+
+router.route("/cart")
+.get(isLoggedIn("Please login to add items to cart"), cartItems)
 
 
 

@@ -50,3 +50,15 @@ module.exports.logout = (req, res, next) => {
     })
 
 };
+
+module.exports.cartItems = async (req, res, next) => {
+    let curUser = await User.findById(res.locals.user._id).populate("cart.products");
+    if (!curUser.cart) {
+        curUser.cart = { quantity: 0, products: [] };
+        await curUser.save();
+    }
+    const cartItems = curUser.cart.products;
+    const cartQuantity = curUser.cart.quantity;
+
+    res.render("user/cart.ejs", {cartItems, cartQuantity});
+}

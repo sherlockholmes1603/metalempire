@@ -4,13 +4,10 @@ const ExpressError = require("./utils/ExpressError.js");
 const { productSchema, reviewSchema } = require("./schema.js");
 const user = require("./models/user.js");
 
-module.exports.isLoggedIn = (req, res, next) => {
+module.exports.isLoggedIn = (message) => (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.redirectUrl = req.originalUrl;
-    req.flash(
-      "error",
-      "You must be logged in to create a new product or edit a product"
-    );
+    req.flash("error", message || "You must be logged in");
     return res.redirect("/login");
   }
   next();
@@ -25,15 +22,15 @@ module.exports.saveRedirectUrl = (req, res, next) => {
 
 module.exports.isOwner = async (req, res, next) => {
   next();
-}
+};
 
 module.exports.isAdmin = async (req, res, next) => {
   let { id } = req.params;
-  let curUser = await user.findById(res.locals.user._id);
-  if (curUser.isAdmin){
+  const curUser = await user.findById(res.locals.user._id);
+  if (curUser.isAdmin) {
     return next();
   }
-  req.flash("error", "You don't have permission to edit");
+  req.flash("error", "You must be logged in as an admin to edit");
   return res.redirect(`/products/${id}`);
 };
 

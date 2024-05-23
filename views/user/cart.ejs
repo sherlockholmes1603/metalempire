@@ -1,0 +1,17 @@
+<% layout("./layout/boilerPlate.ejs") %>
+
+<% layout("./layout/boilerPlate.ejs") %>
+
+<h1>Your Cart</h1>
+<% if (cartItems.length === 0) { %>
+    <p>Your cart is empty.</p>
+<% } else { %>
+    <ul>
+        <% cartItems.forEach(item => { %>
+            <li>
+                <!-- Display cart item details -->
+                <p><%= item.name %> - <%= item.price %></p>
+            </li>
+        <% }); %>
+    </ul>
+<% } %>
