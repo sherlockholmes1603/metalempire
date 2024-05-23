@@ -75,14 +75,24 @@ module.exports.addItemsToCart = async (req, res, next) => {
     let productInCart = curUser.cart.products.find(product => product._id.equals(id));
 
     if (productInCart) {
-        req.flash("info", "Product is already in the cart");
+        req.flash("success", "Product is already in the cart");
+        res.redirect(`/products/${id}`);
     } else {
         let productToAdd = await Product.findById(id);
         curUser.cart.products.push(productToAdd);
         curUser.cart.quantity += 1;  
-    }
+        await curUser.save();
+        req.flash("success", "Product added to cart");
+        res.redirect('/cart');
+    } 
+};
 
+module.exports.removeItemsFromCart = async (req, res, next) => {
+    let { id } = req.params;
+    let curUser = await User.findById(res.locals.user._id);
+    curUser.cart.products = curUser.cart.products.filter(product => !product._id.equals(id));
+    curUser.cart.quantity = curUser.cart.products.length;
     await curUser.save();
-    req.flash("success", "Product added to cart");
-    res.redirect('/cart');  
+    req.flash('success', 'Item removed from cart');
+    res.redirect('/cart');
 };
