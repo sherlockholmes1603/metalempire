@@ -150,6 +150,7 @@ body {
     width: 75%;
     padding: 10px;
     overflow-x: hidden;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {

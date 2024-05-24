@@ -4,8 +4,6 @@ module.exports.productSchema = Joi.object({
     product: Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),
-        location: Joi.string().required(),
-        country: Joi.string().required(),
         price: Joi.string().required().min(0),
     }).required()
 });

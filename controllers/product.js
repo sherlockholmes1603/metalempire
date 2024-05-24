@@ -27,17 +27,11 @@ module.exports.showproduct = async (req, res) => {
 
 
 module.exports.createproduct = async (req, res, next)=>{
-
-    let geoResponse = await geocodingClient.forwardGeocode({
-        query: `${req.body.product.location} ${req.body.product.country}`,
-        limit: 1
-      })
-        .send()
-
+    console.dir(req);
     let url = req.file.path;
     let filename = req.file.filename;
     console.log(filename, ":  ", url)
-    const newproduct = new product(req.body.product);
+    const newproduct = new products(req.body.product);
     newproduct.owner = req.user._id;
     newproduct.image = {url, filename};
     newproduct.geometry = geoResponse.body.features[0].geometry;
