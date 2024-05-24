@@ -27,14 +27,12 @@ module.exports.showproduct = async (req, res) => {
 
 
 module.exports.createproduct = async (req, res, next)=>{
-    console.dir(req);
     let url = req.file.path;
     let filename = req.file.filename;
     console.log(filename, ":  ", url)
     const newproduct = new products(req.body.product);
     newproduct.owner = req.user._id;
     newproduct.image = {url, filename};
-    newproduct.geometry = geoResponse.body.features[0].geometry;
     await newproduct.save();
     req.flash("success", "New product Created");
     res.redirect("/products");

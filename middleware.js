@@ -5,7 +5,6 @@ const { productSchema, reviewSchema } = require("./schema.js");
 const user = require("./models/user.js");
 
 module.exports.isLoggedIn = (message) => (req, res, next) => {
-  console.log(req);
   if (!req.isAuthenticated()) {
     req.session.redirectUrl = req.originalUrl;
     req.flash("error", message || "You must be logged in");
@@ -35,7 +34,6 @@ module.exports.isAdmin = async (req, res, next) => {
 };
 
 module.exports.validateproduct = (req, res, next) => {
-  console.dir(req.dir);
   let { error } = productSchema.validate(req.body);
   if (error) {
     let errMsg = error.details.map((el) => el.message).join(",");

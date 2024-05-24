@@ -5,6 +5,17 @@ module.exports.productSchema = Joi.object({
         title: Joi.string().required(),
         description: Joi.string().required(),
         price: Joi.string().required().min(0),
+        filter: Joi.string().valid(
+            'Statues', 
+            'Wall Art', 
+            'Crystal Glass', 
+            'Steel and Copper Utensils', 
+            'Antique Items', 
+            'Decorative Items', 
+            'Crockery', 
+            'Religious Utensils', 
+            'Diya'
+        ).required()
     }).required()
 });
 
