@@ -12,9 +12,9 @@ const { giveReview, destroyReview } = require("../controllers/review.js");
 
 
 
-router.post("/", isLoggedIn, validateReview, wrapAsync( giveReview ));
+router.post("/", isLoggedIn("You must be logged in to add a review"), validateReview, wrapAsync( giveReview ));
 
-router.delete("/:rid", isLoggedIn, isReviewAuthor, wrapAsync(destroyReview));
+router.delete("/:rid", isLoggedIn("You must be logged to delete a review"), isReviewAuthor, wrapAsync(destroyReview));
 
 
 

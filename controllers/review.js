@@ -6,6 +6,9 @@ module.exports.giveReview = async (req, res) => {
     let products = await product.findById(req.params.id);
     let newReview = new Review(req.body.review);
 
+    if(!req.user._id){
+        return res.redirect(`/products/${products._id}`);
+    }
     newReview.author = req.user._id;
 
     products.reviews.push(newReview);

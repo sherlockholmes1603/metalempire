@@ -7,6 +7,7 @@ const sampleproducts = [
       filename: "wireless-mouse.jpg",
     },
     price: 29.99,
+    filter: "Statues"
   },
   {
     title: "Bluetooth Keyboard",
@@ -17,6 +18,7 @@ const sampleproducts = [
       filename: "bluetooth-keyboard.jpg",
     },
     price: 49.99,
+    filter: "Statues"
   },
   {
     title: "HD Monitor",
@@ -27,6 +29,7 @@ const sampleproducts = [
       filename: "hd-monitor.jpg",
     },
     price: 159.99,
+    filter: "Statues"
   },
   {
     title: "Gaming Chair",
@@ -37,6 +40,7 @@ const sampleproducts = [
       filename: "gaming-chair.jpg",
     },
     price: 199.99,
+    filter: "Statues"
   },
   {
     title: "USB-C Hub",
@@ -47,6 +51,7 @@ const sampleproducts = [
       filename: "usb-c-hub.jpg",
     },
     price: 39.99,
+    filter: "Statues"
   },
   {
     title: "Portable SSD",
@@ -56,6 +61,7 @@ const sampleproducts = [
       filename: "portable-ssd.jpg",
     },
     price: 99.99,
+    filter: "Statues"
   },
   {
     title: "Noise Cancelling Headphones",
@@ -66,6 +72,7 @@ const sampleproducts = [
       filename: "noise-cancelling-headphones.jpg",
     },
     price: 149.99,
+    filter: "Statues"
   },
   {
     title: "Smartwatch",
@@ -76,6 +83,7 @@ const sampleproducts = [
       filename: "smartwatch.jpg",
     },
     price: 199.99,
+    filter: "Statues"
   },
   {
     title: "Laptop Stand",
@@ -85,6 +93,7 @@ const sampleproducts = [
       filename: "laptop-stand.jpg",
     },
     price: 29.99,
+    filter: "Statues"
   },
   {
     title: "Webcam",
@@ -95,6 +104,7 @@ const sampleproducts = [
       filename: "webcam.jpg",
     },
     price: 59.99,
+    filter: "Statues"
   },
   {
     title: "External Hard Drive",
@@ -105,6 +115,7 @@ const sampleproducts = [
       filename: "external-hard-drive.jpg",
     },
     price: 79.99,
+    filter: "Statues"
   },
   {
     title: "Mechanical Keyboard",
@@ -114,6 +125,7 @@ const sampleproducts = [
       filename: "mechanical-keyboard.jpg",
     },
     price: 89.99,
+    filter: "Statues"
   },
   {
     title: "Wireless Earbuds",
@@ -124,6 +136,7 @@ const sampleproducts = [
       filename: "wireless-earbuds.jpg",
     },
     price: 49.99,
+    filter: "Statues"
   },
   {
     title: "4K Action Camera",
@@ -134,6 +147,7 @@ const sampleproducts = [
       filename: "4k-action-camera.jpg",
     },
     price: 129.99,
+    filter: "Statues"
   },
   {
     title: "Smart Light Bulbs",
@@ -144,6 +158,7 @@ const sampleproducts = [
       filename: "smart-light-bulbs.jpg",
     },
     price: 39.99,
+    filter: "Statues"
   },
   {
     title: "Fitness Tracker",
@@ -154,6 +169,7 @@ const sampleproducts = [
       filename: "fitness-tracker.jpg",
     },
     price: 59.99,
+    filter: "Statues"
   },
 ];
 
