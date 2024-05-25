@@ -4,9 +4,15 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({accessToken: mapToken});
 
 module.exports.index = async (req, res) => {
-    console.log(req.query);
-    let allproducts = await products.find();
-    // console.log(chats);
+    const filter = req.query.filter;
+
+    let allproducts;
+    if(filter){
+        allproducts = await products.find({filter: filter});
+    }
+    else{
+        allproducts = await products.find();
+    }
     res.render("products/index.ejs", {allproducts});
 };
 
@@ -41,7 +47,7 @@ module.exports.createproduct = async (req, res, next)=>{
 
 module.exports.renderEditForm = async (req, res) => {
     let {id} = req.params;
-    let product = await product.findById(id);
+    let product = await products.findById(id);
     if(!product){
       req.flash("error", "product you requested does not exits");
       return res.redirect("/products")
@@ -52,7 +58,7 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.editproduct = async (req, res) => {
     let {id} = req.params;
-    let product = await product.findByIdAndUpdate(id, {...req.body.product});
+    let product = await products.findByIdAndUpdate(id, {...req.body.product});
     if(typeof req.file !== "undefined"){
         let url = req.file.path;
         let filename = req.file.filename;

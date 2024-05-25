@@ -20,7 +20,7 @@ const productSchema = Schema({
     enum: [
       "Statues",
       "WallArts",
-      "CrytalGlass",
+      "CrystalGlass",
       "Utensils",
       "AntiqueItems",
       "DecorativeItems",

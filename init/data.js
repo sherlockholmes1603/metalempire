@@ -7,7 +7,7 @@ const sampleproducts = [
       filename: "wireless-mouse.jpg",
     },
     price: 29.99,
-    filter: "Statues"
+    filter: "Diya"
   },
   {
     title: "Bluetooth Keyboard",
@@ -51,7 +51,7 @@ const sampleproducts = [
       filename: "usb-c-hub.jpg",
     },
     price: 39.99,
-    filter: "Statues"
+    filter: "RelegiousUtensils"
   },
   {
     title: "Portable SSD",
@@ -61,7 +61,7 @@ const sampleproducts = [
       filename: "portable-ssd.jpg",
     },
     price: 99.99,
-    filter: "Statues"
+    filter: "Crockery"
   },
   {
     title: "Noise Cancelling Headphones",
@@ -72,7 +72,7 @@ const sampleproducts = [
       filename: "noise-cancelling-headphones.jpg",
     },
     price: 149.99,
-    filter: "Statues"
+    filter: "Diya"
   },
   {
     title: "Smartwatch",

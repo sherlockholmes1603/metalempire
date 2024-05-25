@@ -1,68 +1,83 @@
 <% layout("./layout/boilerPlate.ejs") %>
 <div class="row mt-3">
-    <div class="col-8 offset-2">
-        <h3>Update This product</h3>
-        <form action="/products/<%= product._id %>?_method=PUT" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
-                <input type="text" name="product[title]" value="<%= product.title %>" class="form-control" required>
-                <div class="invalid-feedback">Give a valid title</div>
-            </div>
-            
-            <br><br>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea name="product[description]"  class="form-control" required><%= product.description %></textarea>    
-                <div class="invalid-feedback">Give a valid description</div>
-            </div>
-            
-            <br><br>
-            <!-- <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input type="text" name="product[image]" value="<%= product.image %> class="form-control" required>
-                <div class="invalid-feedback">Give a valid image link</div>
-                
-            </div> -->
+  <div class="col-8 offset-2">
+    <h3>Update This product</h3>
+    <form
+      action="/products/<%= product._id %>?_method=PUT"
+      method="POST"
+      class="needs-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          name="product[title]"
+          value="<%= product.title %>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Give a valid title</div>
+      </div>
 
-            <div class="mb-3">
-                Original product Image <br>
-                <img src="<%= product.image.url %>" alt="">
-            </div>
+      <br /><br />
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="product[description]" class="form-control" required>
+<%= product.description %></textarea
+        >
+        <div class="invalid-feedback">Give a valid description</div>
+      </div>
 
-            <div class="mb-3">
-                <label for="image" class="form-label">Upload New Image</label>
-                <input type="file" name="product[image]"  class="form-control" >
-            </div>
-            
-            <br><br>
-            <div class="row">
-                <div class="mb-3 col-md-4">
-                    <label for="price" class="form-label">Price</label>
-                    <input type="number" name="product[price]" value="<%= product.price %>" class="form-control" required>    
-                    <div class="invalid-feedback">Give a valid Price</div>
-                </div>
-                
-                <br><br>
-                <div class="mb-3 col-md-8">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" name="product[country]" value="<%= product.country %>" class="form-control" required>
-                    <div class="invalid-feedback">Give a valid country</div>
-                    
-                </div>
-            </div>
-            
-            
-            <br><br>
-            <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" name="product[location]" value="<%= product.location %>" class="form-control" required>
-                <div class="invalid-feedback">Give a valid location</div>
-            </div>
-            
-            <br><br>
-            <button class="btn btn-dark edit-btn">Update This  product</button>
-            <br><br>
-            
-        </form>
-    </div>
+      <br /><br />
+
+      <div class="mb-3">
+        Original product Image <br />
+        <img src="<%= product.image.url %>" alt="" />
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload New Image</label>
+        <input type="file" name="product[image]" class="form-control" />
+      </div>
+
+      <br /><br />
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            name="product[price]"
+            value="<%= product.price %>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Give a valid Price</div>
+        </div>
+
+        <br /><br />
+        <div class="mb-3 col-md-8">
+          <label for="type" class="form-label">Product Type</label>
+          <select name="product[filter]" class="form-control" required>
+            <option value="" disabled selected>Select product type</option>
+            <option value="Statues">Statues</option>
+            <option value="WallArts">Wall Art</option>
+            <option value="CrystalGlass">Crystal Glass</option>
+            <option value="Utensils">Steel and Copper Utensils</option>
+            <option value="AntiqueItems">Antique Items</option>
+            <option value="DecorativeItems">Decorative Items</option>
+            <option value="Crockery">Crockery</option>
+            <option value="ReligiousUtensils">Religious Utensils</option>
+            <option value="Diya">Diya</option>
+          </select>
+          <div class="invalid-feedback">Select a valid product type</div>
+        </div>
+      </div>
+
+      <br /><br />
+      <button class="btn btn-dark edit-btn">Update This product</button>
+      <br /><br />
+    </form>
+  </div>
 </div>

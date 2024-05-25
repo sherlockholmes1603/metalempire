@@ -26,7 +26,7 @@ router.route("/:id")
 
 
 
-router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(renderEditForm));
+router.get("/:id/edit", isLoggedIn("You must be logged in as admin to edit"), isAdmin, wrapAsync(renderEditForm));
 
 
 module.exports = router;
