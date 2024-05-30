@@ -1,33 +1,85 @@
 <div class="filters d-none d-md-block bg-light">
-  <!-- Filters content here -->
-  <div class="filter">
-    <div><a href="/products?filter=Statues" style="text-decoration: none; color: black;">Statues <i class="fa-solid fa-monument"></i></a></div>
+<form id="selectionForm" method="get" action="/products">
+  <div class="" style="padding: 1rem 3rem">
+    <div class="m-2">
+      <h5 data-toggle="collapse" data-target="#priceRangeSection" aria-expanded="true" aria-controls="priceRangeSection" style="cursor: pointer;">
+        Price Range
+      </h5>
+      <div id="priceRangeSection" class="collapse show">
+        <p style="font-size: 0.9rem">Total prices for 5 nights before taxes</p>
+        <div class="price-range p-3">
+          <input class="form-control" value="100" type="number" min="0" name="minPrice" id="minPrice" />
+          <span class="text-secondary">To</span>
+          <input class="form-control" value="10000" type="number" max="2200000" name="maxPrice" id="maxPrice" />
+        </div>
+      </div>
+    </div>
+    <div class="m-2">
+      <h5 data-toggle="collapse" data-target="#typesOfPlaceSection" aria-expanded="true" aria-controls="typesOfPlaceSection" style="cursor: pointer;">
+        Types of Place
+      </h5>
+      <div id="typesOfPlaceSection" class="collapse show">
+        <p style="font-size: 0.9rem">Search products on the basis of type of products</p>
+        <div class="category-of-place p-2">
+          <div class="product-types">
+            <label class="filter-image text-dark">
+              <i class="fa-solid fa-monument"></i>
+              <span>Statues</span>
+              <input type="checkbox" class="m-0 opt" value="Statues" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fas fa-object-group"></i>
+              <span>WallArts</span>
+              <input type="checkbox" class="m-0 opt" value="WallArts" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fa-solid fa-diamond"></i>
+              <span>Crystal Glass</span>
+              <input type="checkbox" class="m-0 opt" value="CrystalGlass" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fa-solid fa-utensils"></i>
+              <span>Steel and Copper Utensils</span>
+              <input type="checkbox" class="m-0 opt" value="Utensils" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fa-sharp fa-solid fa-scroll"></i>
+              <span>Antique Items</span>
+              <input type="checkbox" class="m-0 opt" value="AntiqueItems" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fa-solid fa-crown"></i>
+              <span>Decorative Items</span>
+              <input type="checkbox" class="m-0 opt" value="DecorativeItems" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fas fa-coffee"></i>
+              <span>Crockery</span>
+              <input type="checkbox" class="m-0 opt" value="Crockery" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fa-solid fa-om"></i>
+              <span>Religious Utensils</span>
+              <input type="checkbox" class="m-0 opt" value="ReligiousUtensils" />
+            </label>
+            <label class="filter-image text-dark">
+              <i class="fa-solid fa-fire-burner"></i>
+              <span>Diya</span>
+              <input type="checkbox" class="m-0 opt" value="Diya" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="filter">
-    <div><a href="/products?filter=WallArts" style="text-decoration: none; color: black;">Wall arts <i class="fas fa-object-group"></i></a></div>
+  <div class="text-center">
+    <button type="submit" class="btn btn-outline-primary" style="color: purple; border-color: purple">
+      Apply
+    </button>
   </div>
-  <div class="filter">
-    <div><a href="/products?filter=CrystalGlass" style="text-decoration: none; color: black;">Crystal Glass <i class="fa-solid fa-diamond"></i></a></div>
-  </div>
-  <div class="filter">
-    <div><a href="/products?filter=Utensils" style="text-decoration: none; color: black;">Stell and Copper Utensils <i class="fa-solid fa-utensils"></i></a></div>
-  </div>
-  <div class="filter">
-    <div><a href="/products?filter=AntiqueItems" style="text-decoration: none; color: black;">Antique Items <i class="fa-sharp fa-solid fa-scroll"></i></a></div>
-  </div>
-  <div class="filter">
-    <div><a href="/products?filter=DecorativeItems" style="text-decoration: none; color: black;">Decorative Items <i class="fa-solid fa-crown"></i></a></div>
-  </div>
-  <div class="filter">
-    <div><a href="/products?filter=Crockery" style="text-decoration: none; color: black;">Crockery <i class="fas fa-coffee"></i></a></div>
-  </div>
-  <div class="filter">
-    <div><a href="/products?filter=RelegiousUtensils" style="text-decoration: none; color: black;">Relegious Utensils <i class="fa-solid fa-om"></i></a></div>
-  </div>
-  <div class="filter">
-    <div><a href="/products?filter=Diya" style="text-decoration: none; color: black;">Diya <i class="fa-solid fa-fire-burner"></i></a></div>
-  </div>
+</form>
 </div>
+
 <div class="d-block d-md-none">
   <br /><br />
   <button
@@ -57,35 +109,115 @@
     </div>
     <div class="offcanvas-body">
       <!-- Filters content for offcanvas here -->
-      <div class="filter">
-        <div><a href="/products?filter=Statues" style="text-decoration: none; color: black;">Statues <i class="fa-solid fa-monument"></i></a></div>
-      </div>
-      <div class="filter">
-        <div><a href="/products?filter=WallArts" style="text-decoration: none; color: black;">Wall arts <i class="fas fa-object-group"></i></a></div>
-      </div>
-      <div class="filter">
-        <div><a href="/products?filter=CrystalGlass" style="text-decoration: none; color: black;">Crystal Glass <i class="fa-solid fa-diamond"></i></a></div>
-      </div>
-      <div class="filter">
-        <div>
-          <a href="/products?filter=Utensils" style="text-decoration: none; color: black;">Stell and Copper Utensils <i class="fa-solid fa-utensils"></i></a></i>
+      <form id="selectionForm" method="get" action="/products">
+        <div class="" style="padding: 1rem 3rem">
+          <div class="m-2">
+            <h5 data-toggle="collapse" data-target="#priceRangeSection" aria-expanded="true" aria-controls="priceRangeSection" style="cursor: pointer;">
+              Price Range
+            </h5>
+            <div id="priceRangeSection" class="collapse show">
+              <p style="font-size: 0.9rem">Total prices for 5 nights before taxes</p>
+              <div class="price-range p-3">
+                <input class="form-control" value="100" type="number" min="0" name="minPrice" id="minPrice" />
+                <span class="text-secondary">To</span>
+                <input class="form-control" value="10000" type="number" max="2200000" name="maxPrice" id="maxPrice" />
+              </div>
+            </div>
+          </div>
+          <div class="m-2">
+            <h5 data-toggle="collapse" data-target="#typesOfPlaceSection" aria-expanded="true" aria-controls="typesOfPlaceSection" style="cursor: pointer;">
+              Types of Place
+            </h5>
+            <div id="typesOfPlaceSection" class="collapse show">
+              <p style="font-size: 0.9rem">Search products on the basis of type of products</p>
+              <div class="category-of-place p-2">
+                <div class="product-types">
+                  <label class="filter-image text-dark">
+                    <i class="fa-solid fa-monument"></i>
+                    <span>Statues</span>
+                    <input type="checkbox" class="m-0 opt" value="Statues" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fas fa-object-group"></i>
+                    <span>WallArts</span>
+                    <input type="checkbox" class="m-0 opt" value="WallArts" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fa-solid fa-diamond"></i>
+                    <span>Crystal Glass</span>
+                    <input type="checkbox" class="m-0 opt" value="CrystalGlass" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Steel and Copper Utensils</span>
+                    <input type="checkbox" class="m-0 opt" value="Utensils" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fa-sharp fa-solid fa-scroll"></i>
+                    <span>Antique Items</span>
+                    <input type="checkbox" class="m-0 opt" value="AntiqueItems" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>Decorative Items</span>
+                    <input type="checkbox" class="m-0 opt" value="DecorativeItems" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fas fa-coffee"></i>
+                    <span>Crockery</span>
+                    <input type="checkbox" class="m-0 opt" value="Crockery" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fa-solid fa-om"></i>
+                    <span>Religious Utensils</span>
+                    <input type="checkbox" class="m-0 opt" value="ReligiousUtensils" />
+                  </label>
+                  <label class="filter-image text-dark">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>Diya</span>
+                    <input type="checkbox" class="m-0 opt" value="Diya" />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="filter">
-        <div><a href="/products?filter=AntiqueItems" style="text-decoration: none; color: black;">Antique Items <i class="fa-sharp fa-solid fa-scroll"></i></a></div>
-      </div>
-      <div class="filter">
-        <div><a href="/products?filter=DecorativeItems" style="text-decoration: none; color: black;">Decorative Items <i class="fa-solid fa-crown"></i></a></div>
-      </div>
-      <div class="filter">
-        <div><a href="/products?filter=Crockery" style="text-decoration: none; color: black;">Crockery <i class="fas fa-coffee"></i></a></div>
-      </div>
-      <div class="filter">
-        <div><a href="/products?filter=RelegiousUtensils" style="text-decoration: none; color: black;">Relegious Utensils <i class="fa-solid fa-om"></i></a></div>
-      </div>
-      <div class="filter">
-        <div><a href="/products?filter=Diya" style="text-decoration: none; color: black;">Diya <i class="fa-solid fa-fire-burner"></i></a></div>
-      </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-outline-primary" style="color: purple; border-color: purple">
+            Apply
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
+
+<script>
+  // JavaScript to handle the form submission
+  document
+    .getElementById("selectionForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const selectedCheckboxes = form.querySelectorAll(
+        'input[type="checkbox"]:checked'
+      );
+      const selectedValues = Array.from(selectedCheckboxes).map(
+        (checkbox) => checkbox.value
+      );
+
+      // Create a query string with the selected categories
+      const params = new URLSearchParams();
+      selectedValues.forEach((value) => params.append("productType", value));
+
+      // Get the price range values
+      const minPrice = form.querySelector("#minPrice").value;
+      const maxPrice = form.querySelector("#maxPrice").value;
+      if (minPrice !== "") params.append("minPrice", minPrice);
+      if (maxPrice !== "") params.append("maxPrice", maxPrice);
+
+      // Redirect to the /listings route with the selected values as query parameters
+      window.location.href = `/products?${params.toString()}`;
+    });
+</script>

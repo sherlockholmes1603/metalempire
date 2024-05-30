@@ -18,12 +18,12 @@
         <p class="card-text">
           &#8377; <%= product.price.toLocaleString("en-IN") %>
         </p>
-        <p class="card-text"><%= product.location %>, <%= product.country %></p>
+        <p class="card-text"><%= product.filter %></p>
       </div>
     </div>
   </div>
 
-  <div class="cart">
+  <div class="cart btns">
     <% if (user) { %>
       <form action="/cart/<%= product._id%>" method="post" class="needs-validation" novalidate>
         <button class="btn btn-success">Add to Cart</button>
@@ -31,6 +31,16 @@
     <% } %>
   </div>
   <br><br>
+
+  <% if (user && user.isAdmin) { %>
+    <div class="btns">
+        <a href="/products/<%= product._id %>/edit" class="btn btn-dark col-1 offset-3">Edit</a>
+
+        <form action="/products/<%= product._id %>?_method=DELETE" method="post">
+            <button class="btn btn-dark offset-4">Delete</button>
+        </form>
+    </div>
+    <% } %>
 
   <div class="reviews">
     <% if (user) { %>

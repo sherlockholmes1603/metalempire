@@ -40,5 +40,26 @@
       crossorigin="anonymous"
     ></script>
     <script src="/js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Push a state to the history stack to track the current page
+        history.pushState({ page: 'current' }, '', location.href);
+    
+        // Listen for the back button event (popstate event)
+        window.addEventListener('popstate', function (event) {
+          if (event.state && event.state.page === 'current') {
+            // Clear all filters
+            document.getElementById('selectionForm').reset();
+    
+            // Optionally, you can redirect to the /product page
+            // window.location.href = '/product';
+          } else {
+            // Otherwise, go back in history
+            history.back();
+          }
+        });
+      });
+    </script>
+    
   </body>
 </html>

@@ -1,19 +1,23 @@
 const products = require("../models/product.js");
-const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mapToken = process.env.MAP_TOKEN;
-const geocodingClient = mbxGeocoding({accessToken: mapToken});
 
 module.exports.index = async (req, res) => {
-    const filter = req.query.filter;
+    let allProducts = await products.find();
 
-    let allproducts;
-    if(filter){
-        allproducts = await products.find({filter: filter});
+    const { minPrice, maxPrice, productType } = req.query;
+
+    let result = allProducts;
+
+    if (productType && productType.length > 0) {
+        result = result.filter(product => productType.includes(product.filter));
     }
-    else{
-        allproducts = await products.find();
+
+    if (minPrice || maxPrice) {
+        const min = minPrice ? parseInt(minPrice) : Number.MIN_SAFE_INTEGER;
+        const max = maxPrice ? parseInt(maxPrice) : Number.MAX_SAFE_INTEGER;
+
+        result = result.filter(product => product.price >= min && product.price <= max);
     }
-    res.render("products/index.ejs", {allproducts});
+    res.render('./products/index.ejs', { allproducts: result });
 };
 
 
@@ -72,7 +76,7 @@ module.exports.editproduct = async (req, res) => {
 
 module.exports.destroyproduct = async (req, res) => {
     let {id} = req.params;
-    let delproduct = await product.findByIdAndDelete(id);
+    let delproduct = await products.findByIdAndDelete(id);
     req.flash("deleted", "The product has been deleted successfully");
     // console.log(delproduct);
     res.redirect("/");

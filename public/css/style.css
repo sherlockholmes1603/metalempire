@@ -172,7 +172,42 @@ body {
   justify-content: center;
 }
 
-a{
-  text-decoration: none;
-  color: #222222;
+#selectionForm{
+  background-color: lightgray;
+}
+
+.category-of-place {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.product-types {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-image {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.filter-image i {
+  margin-right: 8px;
+}
+
+.filter-image input[type="checkbox"] {
+  margin-left: auto;
+}
+
+.m-0{
+  margin-left: 5px!important;
+}
+
+span{
+  margin-right: 10px;
 }
